@@ -1,0 +1,76 @@
+<p>characters works!</p>
+<h1>hola mundo</h1>
+
+
+<div class="container">
+  <div class="col" style="width: 20%; float:left">
+    <table>
+      <tr>
+        <th>STRENGTH</th>
+      </tr>
+      <tr>
+        <th>DEXTERITY</th>
+      </tr>
+      <tr>
+        <th>CONSTITUTION</th>
+      </tr>
+      <tr>
+        <th>INTELLIGENCE</th>
+      </tr>
+      <tr>
+        <th>WISDOM</th>
+      </tr>
+      <tr>
+        <th>CHARISMA</th>
+      </tr>
+    </table>
+  </div>
+  <div class="col" style="width: 80%; float:right">
+      <div class="row">
+        <div class="col " style="max-width: 30%;" >
+          <mat-form-field appearance="fill">
+            <mat-label>name</mat-label>
+            <input matInput>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field appearance="fill">
+            <mat-label>Select race</mat-label>
+            <mat-select placeholder="race" [(value)]="selectRace" (selectionChange)="selectRaces()"> 
+              <mat-option *ngFor="let race of races" [value]="race">{{race}}</mat-option>    
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col" style="max-width: 30%;">
+          <mat-form-field appearance="fill">
+            <mat-label>Select class</mat-label>
+            <mat-select placeholder="class" [(value)]="selectClass" (selectionChange)="selectClassess()"> 
+              <mat-option *ngFor="let class of classes" [value]="class ">{{class}}</mat-option>    
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col" >
+          <mat-form-field appearance="fill">
+            <mat-label>alignment </mat-label>
+            <input matInput>
+          </mat-form-field>
+
+        </div>
+      </div>
+  </div>
+  
+</div>
+
+
+
+
+
+  
+
+
+
+
+
