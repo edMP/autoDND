@@ -18,10 +18,27 @@ public class Characters {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
-    private String profession;
+    private int level;
+    private String character_name;
+    private String profesion;
     private String race;
-    private String background;
     private String stats;
+    private String alignement;
+    private String hit_dice;
+    private String personality_trails;
+    private String ideals;
+    private Integer profeci_bonus;
+    private Integer mobility;
+    private String leguage;
+    private String bound;
+
+
+    //modelos aparte
+    private String background;
+    private String skils;
+    private String flaws;
+
+    private String equipment;
+
 
 }
