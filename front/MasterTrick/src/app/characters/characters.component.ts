@@ -33,22 +33,22 @@ export class CharactersComponent implements OnInit {
   selectRaces(){
   console.log(this.selectRace);
    this.dnd.getrace(this.selectRace).subscribe((response)=>{
-    console.log(response)
+   
       this.post=response;
+       console.log(this.post)
     })
   }
 
   selectClassess(){
-   this.dnd.gettype(this.selectClass).subscribe((response)=>{
+    
+   /*this.dnd.gettype(this.selectClass).subscribe((response)=>{
       console.log(response)
       this.post=response; 
       console.log("hola mundo")
       
-    })
-    /*this.dnd.type(this.selectClass);
-  for(let a of this.dnd.type(this.selectClass)){
-      console.log(a)
-    }*/
+    })*/
+    this.dnd.type(this.selectClass);
+   
     
   }
 

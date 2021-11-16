@@ -8,7 +8,7 @@ import { Observable, race } from 'rxjs';
   providedIn: 'root'
 })
 export class DndService {
-
+  info: any[] = [];
   private urlEndpoint: string = "https://api.open5e.com";
   constructor(private http: HttpClient) {
   }
@@ -17,22 +17,7 @@ export class DndService {
     return this.http.get(`${this.urlEndpoint}/classes/` + work);
 
   }
-  type(work: string) {
-    var info: any[] = [];
-
-    //console.log("https://api.open5e.com/classes/" + work)
-    fetch("https://api.open5e.com/classes/" + work)
-      .then(res => res.json())
-      .then(data => {
-        for (let i of data.work) {
-          info.push(i.hit_dice)
-          info.push(i.prof_armor)
-
-        }
-      })
-    return info;
-
-  }
+  
 
   getrace(race: string) {
     return this.http.get(`${this.urlEndpoint}/races/`+race);
@@ -61,7 +46,27 @@ export class DndService {
         }
       }
       )
+     
     return work;
+
+  }
+  
+  type(work: string) {
+    
+    
+    //console.log("https://api.open5e.com/classes/" + work)
+    fetch("https://api.open5e.com/classes/" + work)
+      .then(res => res.json())
+      .then(data => {
+          
+        document.getElementById("dice")!.innerHTML=data["hit_dice"];
+          this.info.push(data["hit_dice"])
+          this.info.push(data["prof_armor"])
+
+        
+      })
+     console.log(this.info)
+    return this.info;
 
   }
 
