@@ -22,7 +22,12 @@ public class Characters {
     private String character_name;
     private String profesion;
     private String race;
-    private String stats;
+    private Integer strength;
+    private Integer dexterity;
+    private Integer constitution;
+    private Integer intelligence;
+    private Integer wisdom;
+    private Integer charisma;
     private String alignement;
     private String hit_dice;
     private String personality_trails;
@@ -34,10 +39,10 @@ public class Characters {
 
 
     //modelos aparte
+
     private String background;
     private String skils;
     private String flaws;
-
     private String equipment;
 
 
