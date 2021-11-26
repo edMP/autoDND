@@ -16,21 +16,23 @@ import javax.persistence.Id;
 public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
 
     private String nick;
     private String name;
     private String last_name;
+    private String password;
     private String email;
 
     public Users() {
     }
 
-    public Users(String nick, String name, String last_name, String email) {
+    public Users(String nick, String name, String last_name, String password, String email) {
         this.nick = nick;
         this.name = name;
         this.last_name = last_name;
+        this.password = password;
         this.email = email;
     }
 
@@ -41,6 +43,7 @@ public class Users {
                 ", nick='" + nick + '\'' +
                 ", name='" + name + '\'' +
                 ", last_name='" + last_name + '\'' +
+                ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 '}';
     }

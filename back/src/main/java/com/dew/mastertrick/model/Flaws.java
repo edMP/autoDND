@@ -16,7 +16,7 @@ import javax.persistence.Id;
 public class Flaws {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     private String name;
     private String desciption;
