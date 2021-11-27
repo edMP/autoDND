@@ -11,10 +11,6 @@ import org.springframework.web.bind.annotation.*;
 public class UsersControllers {
     @Autowired
     UserRespository userRespository;
-    /*
-    alta usuario
-    delete usuario
-     */
     @GetMapping(value="/users")
         public ResponseEntity<Object> usersList(){
             return new ResponseEntity<>(userRespository.findAll(), HttpStatus.OK);

@@ -1,13 +1,14 @@
 package com.dew.mastertrick.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Entity
@@ -24,6 +25,11 @@ public class Users {
     private String last_name;
     private String password;
     private String email;
+
+    @JsonBackReference
+    @EqualsAndHashCode.Exclude
+    @OneToMany(mappedBy =  "alter", cascade = CascadeType.ALL )
+    Set<Characters> alter=new HashSet<>();
 
     public Users() {
     }
