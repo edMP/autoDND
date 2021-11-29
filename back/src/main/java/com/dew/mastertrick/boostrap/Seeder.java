@@ -31,7 +31,7 @@ public class Seeder implements CommandLineRunner {
                 ,"comunista",4,3,"enano","torpe",u1));
         Characters ch2=characterRepository.save(new Characters(4,"rosas","chaman","humano"
                 ,6,9,2,12,3,4,"malo","1d8","facha"
-                ,"vegano",4,3,"humano","humanidad",u1));
+                ,"vegano",4,3,"humano","humanidad",u2));
         Characters ch3=characterRepository.save(new Characters(1,"rosalia","cleriga","elfa"
                 ,6,9,2,12,3,4,"progre","1d22","sorda"
                 ,"caarara",4,3,"elfico","familia",u1));
