@@ -1,7 +1,9 @@
 package com.dew.mastertrick.controllers;
 
+import com.dew.mastertrick.model.Backgrounds;
 import com.dew.mastertrick.model.Characters;
 import com.dew.mastertrick.model.Users;
+import com.dew.mastertrick.repositoires.BackgroundRepository;
 import com.dew.mastertrick.repositoires.CharacterRepository;
 import com.dew.mastertrick.repositoires.UserRespository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,9 @@ public class CharactersControllers {
 
     @Autowired
     UserRespository userRespository;
+
+    @Autowired
+    BackgroundRepository backgroundRepository;
 
     @GetMapping(value = "/characters")
         public ResponseEntity<Object>characterList(){
@@ -43,10 +48,13 @@ public class CharactersControllers {
                                  @RequestParam("mobility")int mobility,
                                  @RequestParam("lenguage")String lenguage,
                                  @RequestParam("bound")String bound,
+                                 @RequestParam("backgrounds")String backgrounds,
+                                     @RequestParam("desciption")String description,
                                  @RequestParam("nick")String nick){
         Users us=checkUser(nick);
+        Backgrounds bc= new Backgrounds(backgrounds,description);
         Characters ch= new Characters(level,name,profesion,race,strength,dexterity,constitution,intelligence,
-                wisdom,charisma,alignement,hit_dice,personality_trails,ideals,profeci_bonus,mobility,lenguage,bound,
+                wisdom,charisma,alignement,hit_dice,personality_trails,ideals,profeci_bonus,mobility,lenguage,bound,backgroundRepository.save(bc),
                 userRespository.save(us));
         characterRepository.save(ch);
         return new ResponseEntity<>("new heroe"+ ch.getCharacter_name(),HttpStatus.OK);

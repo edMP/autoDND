@@ -1,7 +1,9 @@
 package com.dew.mastertrick.boostrap;
 
+import com.dew.mastertrick.model.Backgrounds;
 import com.dew.mastertrick.model.Characters;
 import com.dew.mastertrick.model.Users;
+import com.dew.mastertrick.repositoires.BackgroundRepository;
 import com.dew.mastertrick.repositoires.CharacterRepository;
 import com.dew.mastertrick.repositoires.UserRespository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,9 @@ public class Seeder implements CommandLineRunner {
     @Autowired
     private CharacterRepository characterRepository;
 
+    @Autowired
+    private BackgroundRepository backgroundRepository;
+
     @Override
     public void run(String[] arg){
         Users u1=userRespository.save(new Users("perico","eduardo","apellido","1234","correo@correo.com"));
@@ -25,16 +30,19 @@ public class Seeder implements CommandLineRunner {
                 Integer constitution, Integer intelligence, Integer wisdom, Integer charisma, String alignement,
                 String hit_dice, String personality_trails, String ideals, Integer profeci_bonus, Integer mobility,
                 String leguage, String bound, Users alter*/
+        Backgrounds bc1=backgroundRepository.save((new Backgrounds("mu solo","esta mu solo")));
+        Backgrounds bc2=backgroundRepository.save((new Backgrounds("solito","esta algo solo")));
+        Backgrounds bc3=backgroundRepository.save((new Backgrounds("niñato","tiene dinero ")));
 
         Characters ch1=characterRepository.save(new Characters(1,"balgla","paladin","enano"
                 ,6,9,2,12,3,4,"neutral","1d6","ciego"
-                ,"comunista",4,3,"enano","torpe",u1));
+                ,"comunista",4,3,"enano","torpe",bc1,u1));
         Characters ch2=characterRepository.save(new Characters(4,"rosas","chaman","humano"
                 ,6,9,2,12,3,4,"malo","1d8","facha"
-                ,"vegano",4,3,"humano","humanidad",u2));
+                ,"vegano",4,3,"humano","humanidad",bc2,u2));
         Characters ch3=characterRepository.save(new Characters(1,"rosalia","cleriga","elfa"
                 ,6,9,2,12,3,4,"progre","1d22","sorda"
-                ,"caarara",4,3,"elfico","familia",u1));
+                ,"caarara",4,3,"elfico","familia",bc3,u1));
 
     }
 

@@ -1,10 +1,14 @@
 package com.dew.mastertrick.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Entity
@@ -39,9 +43,12 @@ public class Characters {
     @JoinColumn
     private Users alter;
 
+
+    @OneToOne
+    @JoinColumn(name = "backgrounds_id",referencedColumnName = "id")
+    private Backgrounds backgrounds;
     //foreing key
-    /*private Long id_user;
-    private String background;
+    /*
     private String skils;
     private String flaws;
     private String equipment;
@@ -50,34 +57,11 @@ public class Characters {
     public Characters() {
     }
 
-    public Characters(int level, String character_name, String profesion, String race,
-                      Integer strength, Integer dexterity, Integer constitution, Integer intelligence,
-                      Integer wisdom, Integer charisma, String alignement, String hit_dice, String personality_trails,
-                      String ideals, Integer profeci_bonus, Integer mobility, String leguage, String bound) {
-        this.level = level;
-        this.character_name = character_name;
-        this.profesion = profesion;
-        this.race = race;
-        this.strength = strength;
-        this.dexterity = dexterity;
-        this.constitution = constitution;
-        this.intelligence = intelligence;
-        this.wisdom = wisdom;
-        this.charisma = charisma;
-        this.alignement = alignement;
-        this.hit_dice = hit_dice;
-        this.personality_trails = personality_trails;
-        this.ideals = ideals;
-        this.profeci_bonus = profeci_bonus;
-        this.mobility = mobility;
-        this.leguage = leguage;
-        this.bound = bound;
-    }
 
     public Characters(int level, String character_name, String profesion, String race, Integer strength, Integer dexterity,
                       Integer constitution, Integer intelligence, Integer wisdom, Integer charisma, String alignement,
                       String hit_dice, String personality_trails, String ideals, Integer profeci_bonus, Integer mobility,
-                      String leguage, String bound, Users alter) {
+                      String leguage, String bound, Backgrounds backgrounds, Users alter) {
         this.level = level;
         this.character_name = character_name;
         this.profesion = profesion;
@@ -96,6 +80,7 @@ public class Characters {
         this.mobility = mobility;
         this.leguage = leguage;
         this.bound = bound;
+        this.backgrounds=backgrounds;
         this.alter = alter;
     }
 
@@ -121,6 +106,8 @@ public class Characters {
                 ", mobility=" + mobility +
                 ", leguage='" + leguage + '\'' +
                 ", bound='" + bound + '\'' +
+                ", alter=" + alter +
+                ", backgrounds=" + backgrounds +
                 '}';
     }
 }
