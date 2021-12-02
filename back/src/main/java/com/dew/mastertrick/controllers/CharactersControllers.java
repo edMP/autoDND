@@ -2,9 +2,11 @@ package com.dew.mastertrick.controllers;
 
 import com.dew.mastertrick.model.Backgrounds;
 import com.dew.mastertrick.model.Characters;
+import com.dew.mastertrick.model.Flaws;
 import com.dew.mastertrick.model.Users;
 import com.dew.mastertrick.repositoires.BackgroundRepository;
 import com.dew.mastertrick.repositoires.CharacterRepository;
+import com.dew.mastertrick.repositoires.FlawRepository;
 import com.dew.mastertrick.repositoires.UserRespository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,6 +25,8 @@ public class CharactersControllers {
 
     @Autowired
     BackgroundRepository backgroundRepository;
+    @Autowired
+    FlawRepository flawRepository;
 
     @GetMapping(value = "/characters")
         public ResponseEntity<Object>characterList(){
@@ -49,14 +53,23 @@ public class CharactersControllers {
                                  @RequestParam("lenguage")String lenguage,
                                  @RequestParam("bound")String bound,
                                  @RequestParam("backgrounds")String backgrounds,
-                                     @RequestParam("desciption")String description,
-                                 @RequestParam("nick")String nick){
+                                                   @RequestParam("desciption")String description,
+                                 @RequestParam("nick")String nick,
+                                 @RequestParam(value = "myFlaws")String[]myFlaws){
+
         Users us=checkUser(nick);
         Backgrounds bc= new Backgrounds(backgrounds,description);
+
         Characters ch= new Characters(level,name,profesion,race,strength,dexterity,constitution,intelligence,
                 wisdom,charisma,alignement,hit_dice,personality_trails,ideals,profeci_bonus,mobility,lenguage,bound,backgroundRepository.save(bc),
                 userRespository.save(us));
         characterRepository.save(ch);
+        if(myFlaws.length>0){
+            for(String a:myFlaws){
+                Flaws fl= flawRepository.save(new Flaws(a));
+                ch.sufFering(fl);
+            }
+        }
         return new ResponseEntity<>("new heroe"+ ch.getCharacter_name(),HttpStatus.OK);
     }
     @GetMapping(value = "/characters/{nick}")
@@ -76,5 +89,7 @@ public class CharactersControllers {
         }
         return cus;
     }
+
+
 
 }

@@ -2,9 +2,11 @@ package com.dew.mastertrick.boostrap;
 
 import com.dew.mastertrick.model.Backgrounds;
 import com.dew.mastertrick.model.Characters;
+import com.dew.mastertrick.model.Flaws;
 import com.dew.mastertrick.model.Users;
 import com.dew.mastertrick.repositoires.BackgroundRepository;
 import com.dew.mastertrick.repositoires.CharacterRepository;
+import com.dew.mastertrick.repositoires.FlawRepository;
 import com.dew.mastertrick.repositoires.UserRespository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -21,6 +23,9 @@ public class Seeder implements CommandLineRunner {
     @Autowired
     private BackgroundRepository backgroundRepository;
 
+    @Autowired
+    FlawRepository flawRepository;
+
     @Override
     public void run(String[] arg){
         Users u1=userRespository.save(new Users("perico","eduardo","apellido","1234","correo@correo.com"));
@@ -35,14 +40,20 @@ public class Seeder implements CommandLineRunner {
         Backgrounds bc3=backgroundRepository.save((new Backgrounds("niñato","tiene dinero ")));
 
         Characters ch1=characterRepository.save(new Characters(1,"balgla","paladin","enano"
-                ,6,9,2,12,3,4,"neutral","1d6","ciego"
+                ,6,9,2,12,3,4,"neutral","1d6","robusto"
                 ,"comunista",4,3,"enano","torpe",bc1,u1));
         Characters ch2=characterRepository.save(new Characters(4,"rosas","chaman","humano"
-                ,6,9,2,12,3,4,"malo","1d8","facha"
+                ,6,9,2,12,3,4,"malo","1d8","degado"
                 ,"vegano",4,3,"humano","humanidad",bc2,u2));
         Characters ch3=characterRepository.save(new Characters(1,"rosalia","cleriga","elfa"
-                ,6,9,2,12,3,4,"progre","1d22","sorda"
+                ,6,9,2,12,3,4,"progre","1d22","inquieto"
                 ,"caarara",4,3,"elfico","familia",bc3,u1));
+        Flaws fl1= new Flaws("cojo");
+        ch1.sufFering(fl1);
+        fl1.has(ch1);
+        flawRepository.save(fl1);
+        Flaws fl2= flawRepository.save(new Flaws("tuerto"));
+
 
     }
 

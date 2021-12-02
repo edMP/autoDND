@@ -4,10 +4,9 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
@@ -19,14 +18,24 @@ public class Flaws {
     private Long id;
 
     private String name;
-    private String desciption;
+
+    @ManyToMany
+    @JoinTable(
+            name= "has",
+            joinColumns = @JoinColumn(name = "flaws_id"),
+            inverseJoinColumns = @JoinColumn(name = "character_id")
+    )
+    private List<Characters> has =new ArrayList<>();
 
     public Flaws() {
     }
+    public void has(Characters characters){
+        has.add(characters);
+    }
 
-    public Flaws(String name, String desciption) {
+    public Flaws(String name) {
         this.name = name;
-        this.desciption = desciption;
+
     }
 
     @Override
@@ -34,7 +43,6 @@ public class Flaws {
         return "Flaws{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", desciption='" + desciption + '\'' +
                 '}';
     }
 }

@@ -7,7 +7,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -47,6 +49,15 @@ public class Characters {
     @OneToOne
     @JoinColumn(name = "backgrounds_id",referencedColumnName = "id")
     private Backgrounds backgrounds;
+
+
+    @ManyToMany
+    @JoinTable(
+            name= "suffering",
+            joinColumns = @JoinColumn(name = "character_id"),
+            inverseJoinColumns = @JoinColumn(name = "flaws_id")
+    )
+    private List <Flaws> suffering =new ArrayList<>();
     //foreing key
     /*
     private String skils;
@@ -57,6 +68,9 @@ public class Characters {
     public Characters() {
     }
 
+    public void sufFering(Flaws flaws){
+        suffering.add(flaws);
+    }
 
     public Characters(int level, String character_name, String profesion, String race, Integer strength, Integer dexterity,
                       Integer constitution, Integer intelligence, Integer wisdom, Integer charisma, String alignement,
