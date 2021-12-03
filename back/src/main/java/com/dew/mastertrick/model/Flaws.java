@@ -1,12 +1,15 @@
 package com.dew.mastertrick.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @Entity
@@ -14,23 +17,26 @@ import java.util.List;
 @Setter
 public class Flaws {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String name;
 
-    @ManyToMany
+     @JsonBackReference(value = "suffering")
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinTable(
-            name= "has",
-            joinColumns = @JoinColumn(name = "flaws_id"),
-            inverseJoinColumns = @JoinColumn(name = "character_id")
+            name= "suffering",
+            joinColumns = @JoinColumn(name = "character_id",referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "flaws_id",referencedColumnName = "id")
     )
-    private List<Characters> has =new ArrayList<>();
+   Set<Characters> charactersSet =new HashSet<>();
 
     public Flaws() {
     }
-    public void has(Characters characters){
-        has.add(characters);
+    public void characterHas(Characters characters){
+
+        System.out.println(characters.getCharacter_name());
+        charactersSet.add(characters);
     }
 
     public Flaws(String name) {

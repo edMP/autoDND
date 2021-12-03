@@ -28,6 +28,7 @@ public class CharactersControllers {
     @Autowired
     FlawRepository flawRepository;
 
+
     @GetMapping(value = "/characters")
         public ResponseEntity<Object>characterList(){
         return new ResponseEntity<>(characterRepository.findAll(), HttpStatus.OK);

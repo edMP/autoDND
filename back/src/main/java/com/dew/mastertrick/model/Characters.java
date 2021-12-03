@@ -51,13 +51,14 @@ public class Characters {
     private Backgrounds backgrounds;
 
 
-    @ManyToMany
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinTable(
             name= "suffering",
-            joinColumns = @JoinColumn(name = "character_id"),
-            inverseJoinColumns = @JoinColumn(name = "flaws_id")
+            joinColumns = @JoinColumn(name = "flaws_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "character_id",referencedColumnName = "id")
     )
-    private List <Flaws> suffering =new ArrayList<>();
+     Set <Flaws> suffering =new HashSet<>();
     //foreing key
     /*
     private String skils;
@@ -69,7 +70,13 @@ public class Characters {
     }
 
     public void sufFering(Flaws flaws){
+        System.out.println(flaws.getName());
         suffering.add(flaws);
+    }
+    public void run(){
+        for (int a =0;a<suffering.size();a++){
+            System.out.println(suffering);
+        }
     }
 
     public Characters(int level, String character_name, String profesion, String race, Integer strength, Integer dexterity,
