@@ -11,16 +11,27 @@ import {MatInputModule} from '@angular/material/input';
 import { MatOptionModule } from '@angular/material/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSelectModule} from '@angular/material/select';
+import { LoginComponent } from './login/login.component';
+import { UserpanelComponent } from './userpanel/userpanel.component';
+import { ViewpanelComponent } from './viewpanel/viewpanel.component';
+import { RegisterComponent } from './register/register.component';
+import {MatButtonModule} from '@angular/material/button';
 const routes:Routes=[
  
   {path:'personaje',component: CharactersComponent},
+  {path:'login',component: LoginComponent},
+  {path:'register',component: RegisterComponent}
 ];
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    CharactersComponent
+    CharactersComponent,
+    LoginComponent,
+    UserpanelComponent,
+    ViewpanelComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -30,9 +41,9 @@ const routes:Routes=[
     MatFormFieldModule,
     MatInputModule,
     MatOptionModule,
-    MatSelectModule,
-    
-    BrowserAnimationsModule
+    MatSelectModule,    
+    BrowserAnimationsModule,
+    MatButtonModule
     
    
     

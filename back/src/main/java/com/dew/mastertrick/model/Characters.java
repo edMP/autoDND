@@ -59,10 +59,8 @@ public class Characters {
             inverseJoinColumns = @JoinColumn(name = "character_id",referencedColumnName = "id")
     )
      Set <Flaws> suffering =new HashSet<>();
-    //foreing key
     /*
     private String skils;
-    private String flaws;
     private String equipment;
     */
 

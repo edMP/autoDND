@@ -39,16 +39,16 @@ public class Seeder implements CommandLineRunner {
         Backgrounds bc2=backgroundRepository.save(new Backgrounds("solito","esta algo solo"));
         Backgrounds bc3=backgroundRepository.save(new Backgrounds("niñato","tiene dinero "));
 
-        Flaws fl1=new Flaws("cojo");
+        Flaws fl1= flawRepository.save(new Flaws("cojo"));
         Flaws fl2= flawRepository.save(new Flaws("tuerto"));
 
 
-        Characters ch1=new Characters(1,"balgla","paladin","enano"
+        Characters ch1=
+        characterRepository.save(new Characters(1,"balgla","paladin","enano"
                 ,6,9,2,12,3,4,"neutral","1d6","robusto"
-                ,"comunista",4,3,"enano","torpe",bc1,u1);
-        characterRepository.save(ch1);
+                ,"comunista",4,3,"enano","torpe",bc1,u1));
+
         ch1.sufFering(fl1);
-        flawRepository.save(fl1);
         fl1.characterHas(ch1);
 
 
@@ -63,7 +63,7 @@ public class Seeder implements CommandLineRunner {
 
 
 
-    ch1.run();
+
 
 
     }

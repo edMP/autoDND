@@ -17,12 +17,11 @@ import java.util.Set;
 @Setter
 public class Flaws {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
 
-     @JsonBackReference(value = "suffering")
+    //@JsonBackReference(value = "suffering")
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinTable(
             name= "suffering",
