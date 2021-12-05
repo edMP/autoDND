@@ -39,6 +39,12 @@ public class UsersControllers {
         return new ResponseEntity<>("Bienvenido "+ nick,HttpStatus.OK);
     }
 
+    @PostMapping(value = "/createuser")
+    public ResponseEntity<Object>addUser(@RequestBody Users users){
+        Users adduser=new Users(users.getNick(),users.getName(),users.getLast_name(),users.getPassword(),users.getEmail());
+        userRespository.save(adduser);
+        return new ResponseEntity<>("Bienvenido "+ adduser.getNick(),HttpStatus.OK);
+    }
 
 
 }
