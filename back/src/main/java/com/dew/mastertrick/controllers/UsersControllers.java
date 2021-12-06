@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class UsersControllers {
     @Autowired
@@ -28,23 +30,32 @@ public class UsersControllers {
             return new ResponseEntity<>("el usuario  eliminado ",HttpStatus.OK);
     }
 
-    @PostMapping(value ="/user/add")
-        public ResponseEntity<Object>newUser(@RequestParam("nick")String nick,
-                                             @RequestParam("name")String name,
-                                             @RequestParam("last_name")String last_name,
-                                             @RequestParam("password")String password,
-                                             @RequestParam("email")String email){
-        Users adduser=new Users(nick,name,last_name,password,email);
-        userRespository.save(adduser);
-        return new ResponseEntity<>("Bienvenido "+ nick,HttpStatus.OK);
-    }
+
 
     @PostMapping(value = "/createuser")
     public ResponseEntity<Object>addUser(@RequestBody Users users){
-        Users adduser=new Users(users.getNick(),users.getName(),users.getLast_name(),users.getPassword(),users.getEmail());
-        userRespository.save(adduser);
-        return new ResponseEntity<>("Bienvenido "+ adduser.getNick(),HttpStatus.OK);
+
+        Users control=checkUser(users.getNick());
+        if(control==null){
+            Users adduser=new Users(users.getNick(),users.getName(),users.getLast_name(),users.getPassword(),users.getEmail());
+            userRespository.save(adduser);
+            return new ResponseEntity<>(true,HttpStatus.OK);
+        }
+
+        return new ResponseEntity<>(false,HttpStatus.OK);
     }
 
+    private Users checkUser(String nick){
+        Users cus= null;
+        List<Users> seeUser=userRespository.serarchUser(nick);
+        if(seeUser !=null && !seeUser.isEmpty()){
+            for(Users user:seeUser){
+                if(nick.equals(user.getNick())){
+                    cus=user;
+                }
+            }
+        }
+        return cus;
+    }
 
 }

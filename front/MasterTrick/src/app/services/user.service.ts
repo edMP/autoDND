@@ -12,6 +12,7 @@ export class UserService{
     constructor(private http: HttpClient) { }
     
     createUser(nick:String,name:String,last_name:String,password:String,email:String): Observable<any>{
+        
         return this.http.post(`${this.urlEndPoint}/createuser`,{nick,name,last_name,password,email},{headers:this.httpHeaders})
     
     }

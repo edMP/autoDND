@@ -1,29 +1,34 @@
-<p>characters works!</p>
-<h1>hola mundo</h1>
-
-
 <div class="container">
   <div class="col" style="width: 20%; float:left">
+    <button mat-raised-button (click)="attributes()">generate</button>
+
     <table>
       <tr>
         <th>STRENGTH</th>
+        <input class="attributes" [value]="strength" disabled>
       </tr>
       <tr>
         <th>DEXTERITY</th>
+        <input class="attributes" [value]="dexterity" disabled>
       </tr>
       <tr>
         <th>CONSTITUTION</th>
+        <input class="attributes" [value]="constitution" disabled>
       </tr>
       <tr>
         <th>INTELLIGENCE</th>
+        <input class="attributes" [value]="intelligence" disabled>
       </tr>
       <tr>
         <th>WISDOM</th>
+        <input class="attributes" [value]="wisdom" disabled>
       </tr>
       <tr>
         <th>CHARISMA</th>
+        <input class="attributes" [value]="charisma" disabled>
       </tr>
     </table>
+    <p id="dice"></p>
   </div>
   <div class="col" style="width: 80%; float:right">
       <div class="row">
@@ -41,6 +46,12 @@
             </mat-select>
           </mat-form-field>
         </div>
+        <div class="col">
+         <mat-form-field appearance="fill">
+           <mat-label>personality trails</mat-label>
+           <input matInput>
+         </mat-form-field>
+        </div>
       </div>
 
       <div class="row">
@@ -51,15 +62,41 @@
               <mat-option *ngFor="let class of classes" [value]="class ">{{class}}</mat-option>    
             </mat-select>
           </mat-form-field>
+         
         </div>
         <div class="col" >
           <mat-form-field appearance="fill">
             <mat-label>alignment </mat-label>
             <input matInput>
           </mat-form-field>
-          
-          <p id="dice"></p>
         </div>
+        <div class="col">
+          <mat-form-field appearance="fill">
+            <mat-label>ideals</mat-label>
+            <input matInput>
+          </mat-form-field>
+         </div>
+      </div>
+      <div class="row">
+        <div class="col" style="max-width: 30%;"> 
+          <mat-form-field appearance="fill">
+            <mat-label>profeci bonus</mat-label>
+            <input matInput>
+          </mat-form-field>
+         </div>
+         <div class="col">
+          <mat-form-field appearance="fill">
+            <mat-label>leguage</mat-label>
+            <input matInput>
+          </mat-form-field>
+         </div>
+         <div class="col">
+          <mat-form-field appearance="fill">
+            <mat-label>bound</mat-label>
+            <input matInput>
+          </mat-form-field>
+         </div>
+        
       </div>
   </div>
   

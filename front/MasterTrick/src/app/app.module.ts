@@ -16,11 +16,15 @@ import { UserpanelComponent } from './userpanel/userpanel.component';
 import { ViewpanelComponent } from './viewpanel/viewpanel.component';
 import { RegisterComponent } from './register/register.component';
 import {MatButtonModule} from '@angular/material/button';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ModalComponent } from './modal/modal.component';
+
 const routes:Routes=[
  
   {path:'personaje',component: CharactersComponent},
   {path:'login',component: LoginComponent},
-  {path:'register',component: RegisterComponent}
+  {path:'register',component: RegisterComponent},
+  {path:'**',pathMatch:'full',redirectTo:'modal'}
 ];
 
 
@@ -31,7 +35,8 @@ const routes:Routes=[
     LoginComponent,
     UserpanelComponent,
     ViewpanelComponent,
-    RegisterComponent
+    RegisterComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +48,8 @@ const routes:Routes=[
     MatOptionModule,
     MatSelectModule,    
     BrowserAnimationsModule,
-    MatButtonModule
+    MatButtonModule,
+    NgbModule
     
    
     

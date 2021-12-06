@@ -1,34 +1,33 @@
-<div class="container">
+<form #regsitercontrol="ngForm">
+  <div class="container">
     
     <div class="row">
         <div class="col " style="max-width: 30%;" >
           <mat-form-field appearance="fill">
-            <mat-label>name</mat-label>
-            <input matInput>
+            <mat-label>nick</mat-label>
+            <input matInput [(ngModel)]="newnick" id="Nick" name="Nick" #Nick="ngModel"required
+            [ngClass]="{'has-error':(Nick.valid && Nick.touched)}" >
+            <mat-error [ngClass]="{'has-error':(Nick.valid && Nick.touched)}" >required</mat-error>
           </mat-form-field>
         </div>
     </div>
         <div class="row">
             <div class="col " style="max-width: 30%;" >
               <mat-form-field appearance="fill">
+                <mat-label>name</mat-label>
+                <input matInput [(ngModel)]="newname" id="firstname" name="firstname" #firstname="ngModel"required
+                [ngClass]="{'has-error':(firstname.valid && firstname.touched)}" >
+                <mat-error [ngClass]="{'has-error':(firstname.valid && firstname.touched)}"> required </mat-error>
+              </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col " style="max-width: 30%;" >
+              <mat-form-field appearance="fill">
                 <mat-label>last name</mat-label>
-                <input matInput>
-              </mat-form-field>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col " style="max-width: 30%;" >
-              <mat-form-field appearance="fill">
-                <mat-label>nick</mat-label>
-                <input matInput>
-              </mat-form-field>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col " style="max-width: 30%;" >
-              <mat-form-field appearance="fill">
-                <mat-label>email</mat-label>
-                <input matInput>
+                <input matInput [(ngModel)]="newlastname" id="lastname" name="lastname" #lastname="ngModel"required 
+                [ngClass]="{'has-error':(lastname.valid && lastname.touched)}">
+                <mat-error [ngClass]="{'has-error':(lastname.valid && lastname.touched)}"> required </mat-error>
               </mat-form-field>
             </div>
         </div>
@@ -36,15 +35,34 @@
             <div class="col " style="max-width: 30%;" >
               <mat-form-field appearance="fill">
                 <mat-label>password</mat-label>
-                <input matInput>
+                <input matInput [(ngModel)]="newpassword" id="password" name="password" #password="ngModel"required
+                [ngClass]="{'has-error':(password.valid && password.touched)}" >
+                <mat-error [ngClass]="{'has-error':(password.valid && password.touched)}"  >required</mat-error>
               </mat-form-field>
             </div>
         </div>
         <div class="row">
+            <div class="col " style="max-width: 30%;" >
+              <mat-form-field appearance="fill">
+                <mat-label>email</mat-label>
+                <input matInput [(ngModel)]="newemail" id="email" name="email" #email="ngModel"required 
+                [ngClass]="{'has-error':(email.valid && email.touched)}">
+                <mat-error [ngClass]="{'has-error':(email.valid && email.touched)}">required</mat-error>
+              </mat-form-field>
+            </div>
+        </div>
+        <div id="myModal" class="modal">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>the user already exists </p>
+          </div>
+        </div>
+        <div class="row">
+          <p id="check"></p>
             <div class="col">
-                <button mat-raised-button class="createAcount" (click)="adduser()">create</button>
+                <button mat-raised-button class="createAcount" (click)="adduser()" [disabled]="!regsitercontrol.valid">create</button>
 
             </div>
         </div>
-
-</div>
+  </div>
+</form>
