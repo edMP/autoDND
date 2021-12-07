@@ -13,10 +13,18 @@ import { DndService } from '../services/dnd.service';
 controlador de creacion de personajes
 */
 export class CharactersComponent implements OnInit {
+  backgrounds:string []=[];
+  background!:string;
   races:string[]=[];
   selectRace!:string;
   race!:string;
   classes:string[]=[];
+  name!:string;
+  ideals!:string;
+  profeci_bonus:number=0;
+  level:number=1;
+  leguage!:string;
+  bound!:string;
   selectClass!:string;
   class!:string;
   strength: number = 0;
@@ -25,38 +33,39 @@ export class CharactersComponent implements OnInit {
   intelligence:number= 0;
   wisdom:number= 0;
   charisma:number= 0;
-
-
+  hit_dice:string="";
+  mobility:number=0;
+  
  
 
   post:any;
-  constructor(private dnd:DndService) { }
+  constructor(public dnd:DndService) { }
 
   ngOnInit(): void {
     
     this.races=this.dnd.showRace();
     this.classes=this.dnd.showWork();
+    this.backgrounds=this.dnd.showBackgraund();
+   
+     
+    
   }
   selectRaces(){
-  console.log(this.selectRace);
+  
    this.dnd.getrace(this.selectRace).subscribe((response)=>{
    
       this.post=response;
-       console.log(this.post)
+       
     })
-  }
-
-  selectClassess(){
-    
-   /*this.dnd.gettype(this.selectClass).subscribe((response)=>{
-      console.log(response)
-      this.post=response; 
-      console.log("hola mundo")
-      
-    })*/
-    this.dnd.type(this.selectClass);
+    this.mobility=this.dnd.speed(this.selectRace)
    
-    
+    this.leguage=this.selectRace;
+  }
+  
+ 
+  selectClassess(){
+    this.hit_dice=this.dnd.type(this.selectClass)!
+     
   }
   attributes(){
     var att:number[]=[]
@@ -79,7 +88,9 @@ export class CharactersComponent implements OnInit {
     this.wisdom=att[4]
     this.charisma=att[5]   
   }
-  create(){
+  profeci(){
+    console.log(this.background)
+    this.profeci_bonus=Math.ceil(1+(this.level/4))
     
   }
 

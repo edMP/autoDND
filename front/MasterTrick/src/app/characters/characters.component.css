@@ -1,3 +1,9 @@
 .attributes{
     width: 35%;
 }
+.hit_dice{
+    width: 60%;
+}
+#main-col{
+    max-width: 30%;
+}

@@ -9,6 +9,8 @@ import { Observable, race } from 'rxjs';
 })
 export class DndService {
   info: any[] = [];
+  dice!:string;
+  walk:number=0;
   private urlEndpoint: string = "https://api.open5e.com";
   constructor(private http: HttpClient) {
   }
@@ -26,7 +28,7 @@ export class DndService {
 
   showRace() {
     var races: any[] = [];
-    fetch(`https://api.open5e.com/races/`)
+    fetch(`https://api.open5e.com/races`)
       .then(res => res.json())
       .then(data => {
         for (let a of data.results) {
@@ -34,8 +36,30 @@ export class DndService {
         }
       })
     return races;
+  }
+  speed(work:string){
+    
+    fetch(`https://api.open5e.com/races/`+work)
+      .then(res => res.json())
+      .then(data => {
+        this.walk=data.speed.walk
+      })
+    return this.walk;
 
   }
+  showBackgraund(){
+    var background: any[] = [];
+    fetch(`https://api.open5e.com/backgrounds/`)
+      .then(res => res.json())
+      .then(data => {
+        for (let a of data.results) {
+          background.push(a.name)
+        }
+      })
+    return background;
+
+  }
+
   showWork() {
     var work: any[] = [];
     fetch(`https://api.open5e.com/classes/`)
@@ -46,29 +70,26 @@ export class DndService {
         }
       }
       )
-     
     return work;
 
   }
   
   type(work: string) {
     
-    
+     
     //console.log("https://api.open5e.com/classes/" + work)
     fetch("https://api.open5e.com/classes/" + work)
       .then(res => res.json())
       .then(data => {
-          
-        document.getElementById("dice")!.innerHTML=data["hit_dice"];
-          this.info.push(data["hit_dice"])
-          this.info.push(data["prof_armor"])
-
+        this.dice=data["hit_dice"]      
+        
         
       })
-     console.log(this.info)
-    return this.info;
-
+      return this.dice;
+      
   }
+
+ 
 
 
 }
