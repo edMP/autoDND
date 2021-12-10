@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class UserService{
     private urlEndPoint:string='http://localhost:8080';
-    private httpHeaders = new HttpHeaders({'contet-type':'application/json'});
+    private httpHeaders = new HttpHeaders({'content-type':'application/json'});
 
     constructor(private http: HttpClient) { }
     

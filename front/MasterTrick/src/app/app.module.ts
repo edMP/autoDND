@@ -18,13 +18,18 @@ import { RegisterComponent } from './register/register.component';
 import {MatButtonModule} from '@angular/material/button';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalComponent } from './modal/modal.component';
-
+import { DataTableComponent } from './data-table/data-table.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { APP_INITIALIZER } from '@angular/core';
+import { resolve } from '@angular/compiler-cli/src/ngtsc/file_system';
 const routes:Routes=[
  
   {path:'personaje',component: CharactersComponent},
   {path:'login',component: LoginComponent},
   {path:'register',component: RegisterComponent},
-  {path:'**',pathMatch:'full',redirectTo:'modal'}
+  {path:'view',component:ViewpanelComponent}
 ];
 
 
@@ -36,7 +41,8 @@ const routes:Routes=[
     UserpanelComponent,
     ViewpanelComponent,
     RegisterComponent,
-    ModalComponent
+    ModalComponent,
+    DataTableComponent
   ],
   imports: [
     BrowserModule,
@@ -49,16 +55,27 @@ const routes:Routes=[
     MatSelectModule,    
     BrowserAnimationsModule,
     MatButtonModule,
-    NgbModule
+    NgbModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
     
    
     
   ],
-  providers: [],
+  providers: [
+    
+  ],
   bootstrap: [AppComponent],
   exports:[
     RouterModule,
   
+  
   ]
+  
 })
-export class AppModule { }
+
+
+export class AppModule {
+  
+ }

@@ -4,22 +4,26 @@
   <meta charset="UTF-9" >
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.1.1/css/all.min.css" integrity="sha512-ioRJH7yXnyX+7fXTQEKPULWkMn3CqMcapK0NNtCN8q//sW7ZeVFcbMJ9RvX99TwDg6P8rAH2IqUSt2TLab4Xmw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <html>
     <body><div class="jumbotron text-center">
 <nav class="navbar navbar-expand-sm bg-light">
   <ul class="navbar-nav">
     <li class="nav-item">
-      <a class="nav-link" href="/login">Link 1</a>
+      <a class="nav-link" href="/login">Login</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="/personaje">Link 2</a>
+      <a class="nav-link" href="/personaje">Nuevo personaje</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Link 3</a>
+      <a class="nav-link" href="view">Mis personajes</a>
     </li>
   </ul>
+  
+  <div class="navbar-nav nav-right"><span [innerHtml]="loginuser"></span>
+    <i class="fas fa-door-open"></i>
+  </div>
 </nav>
 
 

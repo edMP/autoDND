@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Background } from '../models/background-model';
 import { characters } from '../models/characters-model';
 import { DndService } from '../services/dnd.service';
 
@@ -13,28 +14,34 @@ import { DndService } from '../services/dnd.service';
 controlador de creacion de personajes
 */
 export class CharactersComponent implements OnInit {
+  character!:characters;
   backgrounds:string []=[];
-  background!:string;
+ background!:Background;
+ tempname!:string;
+ tempdescription!:string;
+  setdes!:string;
   races:string[]=[];
   selectRace!:string;
   race!:string;
   classes:string[]=[];
   name!:string;
   ideals!:string;
-  profeci_bonus:number=0;
-  level:number=1;
+  alignement!:string;
+  personality_trails:string="";
+  profeci_bonus:string="0";
+  level:string="1";
   leguage!:string;
   bound!:string;
   selectClass!:string;
   class!:string;
-  strength: number = 0;
-  dexterity:number= 0;
-  constitution:number= 0;
-  intelligence:number= 0;
-  wisdom:number= 0;
-  charisma:number= 0;
+  strength: string="0";
+  dexterity:string="0";
+  constitution:string="0";
+  intelligence:string="0";
+  wisdom:string="0";
+  charisma:string="0";
   hit_dice:string="";
-  mobility:number=0;
+  mobility:string="0";
   
  
 
@@ -50,21 +57,20 @@ export class CharactersComponent implements OnInit {
      
     
   }
+
   selectRaces(){
   
-   this.dnd.getrace(this.selectRace).subscribe((response)=>{
-   
-      this.post=response;
-       
+   this.dnd.getrace(this.selectRace).subscribe((response)=>{   
+      this.post=response;       
     })
-    this.mobility=this.dnd.speed(this.selectRace)
+   this.dnd.speed(this.selectRace,this)
    
     this.leguage=this.selectRace;
   }
   
  
   selectClassess(){
-    this.hit_dice=this.dnd.type(this.selectClass)!
+    this.dnd.type(this.selectClass, this)
      
   }
   attributes(){
@@ -81,17 +87,35 @@ export class CharactersComponent implements OnInit {
       att.push(less.reduce((a,b)=>a+b,0))
       
     }
-    this.strength=att[0]
-    this.dexterity=att[1]
-    this.constitution=att[2]
-    this.intelligence=att[3]
-    this.wisdom=att[4]
-    this.charisma=att[5]   
+    this.strength=""+att[0]
+    this.dexterity=""+att[1]
+    this.constitution=""+att[2]
+    this.intelligence=""+att[3]
+    this.wisdom=""+att[4]
+    this.charisma=""+att[5]   
   }
   profeci(){
-    console.log(this.background)
-    this.profeci_bonus=Math.ceil(1+(this.level/4))
+    
+    this.profeci_bonus=""+Math.ceil(1+(parseInt(this.level)/4))
     
   }
+  create(){
+    
+    this.background = {
+      name:this.tempname,
+      description:this.tempdescription
+    }
+    
+   
+    this.dnd.createCharacter(
+      this.level,this.name,this.selectClass,this.selectRace
+      ,this.strength,this.dexterity,this.constitution,this.intelligence,this.wisdom
+      ,this.charisma,this.alignement,this.hit_dice,this.personality_trails
+      ,this.ideals,this.profeci_bonus,this.mobility,this.leguage,this.bound
+      ,this.background
+      ).subscribe(addc=>{
+          console.log("yes")
+        })
+  } 
 
 }

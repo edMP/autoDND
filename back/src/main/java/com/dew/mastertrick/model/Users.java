@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -25,6 +26,7 @@ public class Users {
     private String last_name;
     private String password;
     private String email;
+    private String token;
 
     @JsonBackReference
     @EqualsAndHashCode.Exclude
@@ -38,19 +40,12 @@ public class Users {
         this.nick = nick;
         this.name = name;
         this.last_name = last_name;
-        this.password = password;
+        this.password = new BCryptPasswordEncoder().encode(password);
         this.email = email;
     }
 
     @Override
     public String toString() {
-        return "Users{" +
-                "id=" + id +
-                ", nick='" + nick + '\'' +
-                ", name='" + name + '\'' +
-                ", last_name='" + last_name + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+        return nick;
     }
 }

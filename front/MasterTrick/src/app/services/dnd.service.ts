@@ -1,6 +1,7 @@
 import { Injectable, Type } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, race } from 'rxjs';
+import { Background } from '../models/background-model';
 
 
 
@@ -12,6 +13,8 @@ export class DndService {
   dice!:string;
   walk:number=0;
   private urlEndpoint: string = "https://api.open5e.com";
+  private serverEndpoint:string="http://localhost:8080";
+  private httpHeaders = new HttpHeaders({'contet-type':'application/json'});
   constructor(private http: HttpClient) {
   }
 
@@ -37,12 +40,12 @@ export class DndService {
       })
     return races;
   }
-  speed(work:string){
+  speed(work:string,character:any){
     
     fetch(`https://api.open5e.com/races/`+work)
       .then(res => res.json())
       .then(data => {
-        this.walk=data.speed.walk
+        character.mobility=data.speed.walk
       })
     return this.walk;
 
@@ -74,21 +77,30 @@ export class DndService {
 
   }
   
-  type(work: string) {
-    
+  type(work: string, character: any) {    
      
     //console.log("https://api.open5e.com/classes/" + work)
     fetch("https://api.open5e.com/classes/" + work)
       .then(res => res.json())
       .then(data => {
-        this.dice=data["hit_dice"]      
-        
-        
+        this.dice=data["hit_dice"]
+        // actualizar componente
+        character.hit_dice = data["hit_dice"]
       })
+
       return this.dice;
       
   }
+  createCharacter(level:string,name:string,profession:string,race:string,strength:string,dexterity:string,
+        constitution:string,intelligence:string,wisdom:string,charisma:string,alignment:string,hit_dice:string,
+        personality_trails:string,ideals:string,profeci_bonus:string,mobility:string,lenguage:string,
+        bound:string,backgrounds:Background): Observable<any>{
+          
+          return this.http.post(`${this.serverEndpoint}/character/add`,{level,name,profession,race,strength,dexterity,constitution,intelligence,wisdom,charisma
+            ,alignment,
+          hit_dice,personality_trails,ideals,profeci_bonus,mobility,lenguage,bound,backgrounds});
 
+  }
  
 
 

@@ -21,9 +21,9 @@ public class Backgrounds {
     public Backgrounds() {
     }
 
-    public Backgrounds(String name, String description) {
+    public Backgrounds(String name/*, String description*/) {
         this.name = name;
-        this.description = description;
+    //    this.description = description;
     }
 
     @Override
@@ -31,7 +31,7 @@ public class Backgrounds {
         return "Backgrounds{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
+                /*", description='" + description + '\'' +*/
                 '}';
     }
 }

@@ -1,6 +1,7 @@
 package com.dew.mastertrick.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -19,28 +20,30 @@ import java.util.Set;
 public class Characters {
 
     @Id
+    @JsonIgnore
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private int level;
-    private String character_name;
-    private String profesion;
+    private String level;
+    private String name;
+    private String profession;
     private String race;
-    private Integer strength;
-    private Integer dexterity;
-    private Integer constitution;
-    private Integer intelligence;
-    private Integer wisdom;
-    private Integer charisma;
-    private String alignement;
+    private String strength;
+    private String dexterity;
+    private String constitution;
+    private String intelligence;
+    private String wisdom;
+    private String charisma;
+    private String alignment;
     private String hit_dice;
     private String personality_trails;
     private String ideals;
-    private Integer profeci_bonus;
-    private Integer mobility;
-    private String leguage;
+    private String profeci_bonus;
+    private String mobility;
+    private String language;
     private String bound;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn
     private Users alter;
@@ -52,6 +55,7 @@ public class Characters {
 
 
 
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinTable(
             name= "suffering",
@@ -77,13 +81,13 @@ public class Characters {
         }
     }
 
-    public Characters(int level, String character_name, String profesion, String race, Integer strength, Integer dexterity,
-                      Integer constitution, Integer intelligence, Integer wisdom, Integer charisma, String alignement,
-                      String hit_dice, String personality_trails, String ideals, Integer profeci_bonus, Integer mobility,
-                      String leguage, String bound, Backgrounds backgrounds, Users alter) {
+    public Characters(String level, String name, String profession, String race, String strength, String dexterity,
+                      String constitution, String intelligence, String wisdom, String charisma, String alignment,
+                      String hit_dice, String personality_trails, String ideals, String profeci_bonus, String mobility,
+                      String language, String bound, Backgrounds backgrounds, Users alter) {
         this.level = level;
-        this.character_name = character_name;
-        this.profesion = profesion;
+        this.name = name;
+        this.profession = profession;
         this.race = race;
         this.strength = strength;
         this.dexterity = dexterity;
@@ -91,13 +95,13 @@ public class Characters {
         this.intelligence = intelligence;
         this.wisdom = wisdom;
         this.charisma = charisma;
-        this.alignement = alignement;
+        this.alignment = alignment;
         this.hit_dice = hit_dice;
         this.personality_trails = personality_trails;
         this.ideals = ideals;
         this.profeci_bonus = profeci_bonus;
         this.mobility = mobility;
-        this.leguage = leguage;
+        this.language = language;
         this.bound = bound;
         this.backgrounds=backgrounds;
         this.alter = alter;
@@ -108,8 +112,8 @@ public class Characters {
         return "Characters{" +
                 "id=" + id +
                 ", level=" + level +
-                ", character_name='" + character_name + '\'' +
-                ", profesion='" + profesion + '\'' +
+                ", character_name='" + name + '\'' +
+                ", profesion='" + profession + '\'' +
                 ", race='" + race + '\'' +
                 ", strength=" + strength +
                 ", dexterity=" + dexterity +
@@ -117,13 +121,13 @@ public class Characters {
                 ", intelligence=" + intelligence +
                 ", wisdom=" + wisdom +
                 ", charisma=" + charisma +
-                ", alignement='" + alignement + '\'' +
+                ", alignement='" + alignment + '\'' +
                 ", hit_dice='" + hit_dice + '\'' +
                 ", personality_trails='" + personality_trails + '\'' +
                 ", ideals='" + ideals + '\'' +
                 ", profeci_bonus=" + profeci_bonus +
                 ", mobility=" + mobility +
-                ", leguage='" + leguage + '\'' +
+                ", leguage='" + language + '\'' +
                 ", bound='" + bound + '\'' +
                 ", alter=" + alter +
                 ", backgrounds=" + backgrounds +

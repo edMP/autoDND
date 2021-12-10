@@ -34,7 +34,7 @@ public class Flaws {
     }
     public void characterHas(Characters characters){
 
-        System.out.println(characters.getCharacter_name());
+        System.out.println(characters.getName());
         charactersSet.add(characters);
     }
 
