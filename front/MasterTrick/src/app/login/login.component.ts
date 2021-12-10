@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Users } from '../models/users-models';
 import { LoginService } from '../services/login.service';
+import {ThemePalette} from '@angular/material/core';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,9 +11,10 @@ export class LoginComponent implements OnInit {
   nick!:string;
   password!:string;
   constructor(private loginser:LoginService) { }
-
+  hide= true;
   ngOnInit(): void {
   }
+  
 
   makelogin(){
    

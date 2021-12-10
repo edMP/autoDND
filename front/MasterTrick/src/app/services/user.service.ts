@@ -16,6 +16,7 @@ export class UserService{
         return this.http.post(`${this.urlEndPoint}/createuser`,{nick,name,last_name,password,email},{headers:this.httpHeaders})
     
     }
+    
 
 
 }

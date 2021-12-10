@@ -24,8 +24,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { APP_INITIALIZER } from '@angular/core';
 import { resolve } from '@angular/compiler-cli/src/ngtsc/file_system';
-
-
+import { LoginService } from './services/login.service';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -52,7 +52,8 @@ import { resolve } from '@angular/compiler-cli/src/ngtsc/file_system';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatCheckboxModule
     
    
     

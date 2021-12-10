@@ -113,8 +113,10 @@ export class CharactersComponent implements OnInit {
       ,this.charisma,this.alignement,this.hit_dice,this.personality_trails
       ,this.ideals,this.profeci_bonus,this.mobility,this.leguage,this.bound
       ,this.background
-      ).subscribe(addc=>{
-          console.log("yes")
+      ).subscribe(response=>{
+         if(response == true){
+          window.location.replace("http://localhost:4200/view");
+         }
         })
   } 
 

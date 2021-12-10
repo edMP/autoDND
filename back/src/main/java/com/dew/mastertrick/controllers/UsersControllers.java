@@ -110,7 +110,7 @@ public class UsersControllers {
         Users user = (Users) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         user.setToken(null);
         userRepository.save(user);
-        return new ResponseEntity<>("", HttpStatus.OK);
+        return new ResponseEntity<>(true, HttpStatus.OK);
     }
 
     @GetMapping("/currentusername")

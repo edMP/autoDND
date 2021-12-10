@@ -31,8 +31,9 @@ public class MasterTrickApplication {
                     .addFilterAfter(new JWTAuthorizationFilter(getApplicationContext()), UsernamePasswordAuthenticationFilter.class)
                     .authorizeRequests()
                     .antMatchers("/login/**").permitAll()
-                    .antMatchers("/register/**").permitAll()
-                    .antMatchers("/**").authenticated();
+                    .antMatchers("/createuser/**").permitAll()
+                    .antMatchers("/**").authenticated()
+                    .antMatchers("/*").authenticated();
         }
 
     }

@@ -40,7 +40,8 @@ public class CharactersControllers {
         //Users us=checkUser(ch.getAlter().getNick());
         //Backgrounds bc= new Backgrounds(backgrounds,description);
         ch.setBackgrounds(backgroundRepository.save(ch.getBackgrounds()));
-        ch.setAlter((Users) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        Users us = (Users) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        ch.setAlter(us);
 
         characterRepository.save(ch);
         /*if(myFlaws.length>0){
@@ -49,7 +50,7 @@ public class CharactersControllers {
                 ch.sufFering(fl);
             }
         }*/
-        return new ResponseEntity<>("new heroe"+ ch.getName(),HttpStatus.OK);
+        return new ResponseEntity<>(true,HttpStatus.OK);
     }
 
     @GetMapping(value = "/currentcharacters/")
@@ -76,6 +77,18 @@ public class CharactersControllers {
         }
         return cus;
     }
+    @GetMapping(value = "/characters/{id}")
+    private ResponseEntity<Object> searchChar(@PathVariable("id")Long id){
+        return new ResponseEntity<>(characterRepository.findById(id),HttpStatus.OK);
+    }
+    @DeleteMapping(value="/characters/{id}")
+    public ResponseEntity<Object>delete(@PathVariable("id")Long id){
+        characterRepository.deleteById(id);
+        return new ResponseEntity<>(" character deleted",HttpStatus.OK);
+    }
+
+
+
 
 
 

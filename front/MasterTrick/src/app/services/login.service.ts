@@ -17,5 +17,8 @@ export class LoginService{
 
         return this.http.post(`${this.urlEndPoint}/login`,{nick,password},{headers:this.httpHeaders})
     }
+    disconect(){
+      return this.http.get(`${this.urlEndPoint}/logout`,{headers:this.httpHeaders})
+    }
     
 }

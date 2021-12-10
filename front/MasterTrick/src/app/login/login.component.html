@@ -14,7 +14,7 @@
             <div class="col-md-6 col-lg-7 d-flex align-items-center" style="width: 280px;">
               <div class="card-body p-4 p-lg-5 text-black">
 
-                <form>
+                <form #controllogin="ngForm">
 
                   <div class="d-flex align-items-center mb-3 pb-1">
                     <i class="fas fa-feather-alt fa-4x" ></i>
@@ -23,10 +23,10 @@
 
                   <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
 
-                  <div class="form-outline mb-4">
-                    <mat-form-field appearance="fill">
-                      <mat-label>nick</mat-label>
-                      <input matInput [(ngModel)]="nick" id="logingNick" name="logingNick" #logingNick="ngModel"required
+                  <div class="form-outline mb-4" >
+                    <mat-form-field appearance="fill" style="width: 220px;">
+                      <mat-label >nick</mat-label>
+                      <input   matInput [(ngModel)]="nick" id="logingNick" name="logingNick" #logingNick="ngModel"required
                       [ngClass]="{'has-error':(logingNick.valid && logingNick.touched)}" >
                       <mat-error [ngClass]="{'has-error':(logingNick.valid && logingNick.touched)}" >required</mat-error>
                     </mat-form-field>
@@ -35,15 +35,18 @@
                   <div class="form-outline mb-4">
                     <mat-form-field appearance="fill">
                       <mat-label>pass</mat-label>
-                      <input matInput [(ngModel)]="password" id="loginpassword" name="loginpassword" #loginpassword="ngModel"required
+                      <input   [type]="hide ? 'password' : 'text' "matInput [(ngModel)]="password" id="loginpassword" name="loginpassword" #loginpassword="ngModel"required
                       [ngClass]="{'has-error':(loginpassword.valid && loginpassword.touched)}" >
+                      <i class="fas fa-eye" matSuffix (click) = "hide = !hide"></i>
                       <mat-error [ngClass]="{'has-error':(loginpassword.valid && loginpassword.touched)}"  >required</mat-error>
+                      
                     </mat-form-field>
+                    
                   </div>
 
                   <div class="pt-1 mb-4">
                    
-                    <button mat-raised-button class="btn btn-dark btn-lg btn-block"  style="width: 300px;"  (click)="makelogin()">login</button>
+                    <button mat-raised-button class="btn btn-dark btn-lg btn-block"  style="width: 300px;"  (click)="makelogin()" [disabled]="!controllogin.valid">login</button>
                     <button mat-raised-button class="btn btn-dark btn-lg btn-block" style="width: 300px;" onclick="location.href='/register'">register</button>
                   </div>
 

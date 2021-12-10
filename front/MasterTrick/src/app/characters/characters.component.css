@@ -1,8 +1,12 @@
+#band{
+    margin-top: 0px;
+}
 .attributes{
-    width: 35%;
+    margin: 3px;
+    width: 60px;
 }
 .hit_dice{
-    width: 60%;
+    margin: 0px;
 }
 #main-col{
     max-width: 30%;
@@ -17,4 +21,7 @@
 }
 .container{
     margin-top: 25px;
+}
+.th{
+    margin: 10px;
 }

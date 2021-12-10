@@ -8,8 +8,50 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.1.1/css/all.min.css" integrity="sha512-ioRJH7yXnyX+7fXTQEKPULWkMn3CqMcapK0NNtCN8q//sW7ZeVFcbMJ9RvX99TwDg6P8rAH2IqUSt2TLab4Xmw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <html>
-    <body><div class="jumbotron text-center" style="margin: 0;">
-<nav class="navbar navbar-expand-sm bg-light" >
+    <body>
+      <div class="jumbotron text-center" style="margin: 0;">
+      <nav class="navbar  navbar-dark bg-dark navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="/login">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/personaje">New character</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/view">my characters</a>
+            </li>
+          </ul>
+        </div>
+       
+        <form class="form-inline">
+          <div class="navbar-nav nav-right" >
+            <span [innerHtml]="loginuser" style="margin-right: 20px;   font-size: 30px;  color: azure;"></span>
+           
+              <i class="fas fa-door-open " style="margin-top: 16px; color: azure;"(click)="disconect()" ></i>
+           
+          </div>
+        </form>
+      </nav>
+
+
+
+      <h1 class="title">MASTER'S TRICK</h1>
+       
+        
+      </div>
+
+      <div id="app"></div>
+      <script src="" type="module"></script>
+
+      <router-outlet></router-outlet>
+
+    </body>
+
+</html>
+
+<!-- <nav class="navbar navbar-expand-sm bg-light" >
   <ul class="navbar-nav">
     <li class="nav-item">
       <a class="nav-link" href="/login">Login</a>
@@ -25,20 +67,4 @@
   <div class="navbar-nav nav-right"><span [innerHtml]="loginuser"></span>
     <i class="fas fa-door-open"></i>
   </div>
-</nav>
-
-
-      
-        <h1>MASTER'S TIRCK</h1>
-        
-      </div>
-
-      <div id="app"></div>
-      <script src="" type="module"></script>
-
-      <router-outlet></router-outlet>
-
-    </body>
-
-</html>
-
+</nav> -->

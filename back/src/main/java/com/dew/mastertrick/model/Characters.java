@@ -20,7 +20,6 @@ import java.util.Set;
 public class Characters {
 
     @Id
-    @JsonIgnore
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -43,7 +42,7 @@ public class Characters {
     private String language;
     private String bound;
 
-    @JsonIgnore
+
     @ManyToOne
     @JoinColumn
     private Users alter;
@@ -55,7 +54,7 @@ public class Characters {
 
 
 
-    @JsonIgnore
+
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinTable(
             name= "suffering",

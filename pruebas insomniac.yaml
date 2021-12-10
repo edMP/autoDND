@@ -1,0 +1,485 @@
+_type: export
+__export_format: 4
+__export_date: 2021-12-10T22:51:08.867Z
+__export_source: insomnia.desktop.app:v2021.7.2
+resources:
+  - _id: req_e2f55ac70c944359bf5aa11b7f756453
+    parentId: fld_9130faa425284c039e4c1e3d9c865143
+    modified: 1638529315159
+    created: 1638523966937
+    url: http://localhost:8080/flaw
+    name: todos los problemas
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1638523966937
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_9130faa425284c039e4c1e3d9c865143
+    parentId: fld_22b7c0cf5a5d4a0cb9b715e5271362df
+    modified: 1638523961293
+    created: 1638523961293
+    name: problemas
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1638523961293
+    _type: request_group
+  - _id: fld_22b7c0cf5a5d4a0cb9b715e5271362df
+    parentId: wrk_df928e77595d435e939f42a6dfc2d92d
+    modified: 1632848292355
+    created: 1632848287538
+    name: MastersTrick
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1614021571243
+    _type: request_group
+  - _id: wrk_df928e77595d435e939f42a6dfc2d92d
+    parentId: null
+    modified: 1602845663138
+    created: 1602845663138
+    name: Insomnia
+    description: ""
+    scope: collection
+    _type: workspace
+  - _id: req_089a605582fc4ae4bf32409e9ea912bd
+    parentId: fld_004b9419fe9a4459b49f7054e79ba9cf
+    modified: 1639169016082
+    created: 1639167448901
+    url: http://localhost:8080/characters/1
+    name: personaje especifico
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJJRVNSQSIsInN1YiI6ImNhcnJhc2NvIiwiaWF0IjoxNjM5MTY4MTkyLCJleHAiOjE2MzkxNzQxOTJ9.EFLStyKXHoQ0gDFQsCAO_Jhib-0K6oeeEjMILdHdSQS5AsycHMfkllKLissqQdSlX7emCEPXLzHZuj57PgeSxA
+    metaSortKey: -1639167448901
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_004b9419fe9a4459b49f7054e79ba9cf
+    parentId: fld_22b7c0cf5a5d4a0cb9b715e5271362df
+    modified: 1638033662202
+    created: 1638033662202
+    name: personajes
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1638033662202
+    _type: request_group
+  - _id: req_85af0f8b5bb34e378d52f2e6fcbed9b5
+    parentId: fld_004b9419fe9a4459b49f7054e79ba9cf
+    modified: 1639168274341
+    created: 1639166306225
+    url: http://localhost:8080/characters/2
+    name: borrar
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJJRVNSQSIsInN1YiI6ImNhcnJhc2NvIiwiaWF0IjoxNjM5MTY4MTkyLCJleHAiOjE2MzkxNzQxOTJ9.EFLStyKXHoQ0gDFQsCAO_Jhib-0K6oeeEjMILdHdSQS5AsycHMfkllKLissqQdSlX7emCEPXLzHZuj57PgeSxA
+    metaSortKey: -1639166306225
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_43ba32d2f0c44b6fac1b8ebfbff6aeec
+    parentId: fld_004b9419fe9a4459b49f7054e79ba9cf
+    modified: 1639168231980
+    created: 1638135416850
+    url: http://localhost:8080/character/add
+    name: crear personaje
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        "level": "1",
+        "name": "lorca",
+        "profession": "barbarian",
+        "race": "halfling",
+        "strength": "20",
+        "dexterity": "14",
+        "constitution": "18",
+        "intelligence": "15",	
+        "wisdom": "10",
+        "charisma": "13",
+        "alignment": "aaaaa",
+        "hit_dice": "1d12",
+        "personality_trails": "ererer",
+        "ideals": "rerere",
+        "profeci_bonus": "2",
+        "mobility": "25",
+        "language": "halfling",
+        "bound": "ererere",
+        "backgrounds": {"name":"asdasdasd",
+        							 "desc":"aaaaaaaa"}
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_7952afd04b85427f93ce60cd8efba2d3
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJJRVNSQSIsInN1YiI6ImNhcnJhc2NvIiwiaWF0IjoxNjM5MTY4MTkyLCJleHAiOjE2MzkxNzQxOTJ9.EFLStyKXHoQ0gDFQsCAO_Jhib-0K6oeeEjMILdHdSQS5AsycHMfkllKLissqQdSlX7emCEPXLzHZuj57PgeSxA
+    metaSortKey: -1638135416850
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_95612081f3384ee69dfdcad73a82f892
+    parentId: fld_004b9419fe9a4459b49f7054e79ba9cf
+    modified: 1639169091792
+    created: 1638034069858
+    url: http://localhost:8080/characters
+    name: listar personaje
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJJRVNSQSIsInN1YiI6ImNhcnJhc2NvIiwiaWF0IjoxNjM5MTY4MTkyLCJleHAiOjE2MzkxNzQxOTJ9.EFLStyKXHoQ0gDFQsCAO_Jhib-0K6oeeEjMILdHdSQS5AsycHMfkllKLissqQdSlX7emCEPXLzHZuj57PgeSxA
+    metaSortKey: -1638034069858
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_c9b48fa1ab1649b7aec9e9b335707daf
+    parentId: fld_87a931420a974ed6ab08a80736bba96f
+    modified: 1639169118606
+    created: 1639001433444
+    url: http://localhost:8080/login
+    name: login
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: '{"nick":"carrasco","password":"3566"}'
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_a3a737cd75614d9f85b70edf91563188
+    authentication:
+      type: bearer
+    metaSortKey: -1639001433444
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_87a931420a974ed6ab08a80736bba96f
+    parentId: fld_22b7c0cf5a5d4a0cb9b715e5271362df
+    modified: 1637694534253
+    created: 1637694534253
+    name: User
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1637694534253
+    _type: request_group
+  - _id: req_18cb93d27125428ea0f0807307234f58
+    parentId: fld_87a931420a974ed6ab08a80736bba96f
+    modified: 1639158981167
+    created: 1638744065868
+    url: "    http://localhost:8080/createuser"
+    name: adduser
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"nick":"statan",
+        	"name":"jason",
+        	"last_name":"tomas",
+        	"password":"123245",
+        	"email":"email@email.com"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_799a19d1839c45c0ba96fa125be911f0
+    authentication: {}
+    metaSortKey: -1638744065868
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_e31bf81fa3f048eab8fc325addaa9812
+    parentId: fld_87a931420a974ed6ab08a80736bba96f
+    modified: 1639168209554
+    created: 1638218013522
+    url: http://localhost:8080/currentcharacters/
+    name: lsit personajes user
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJJRVNSQSIsInN1YiI6ImNhcnJhc2NvIiwiaWF0IjoxNjM5MTY4MTkyLCJleHAiOjE2MzkxNzQxOTJ9.EFLStyKXHoQ0gDFQsCAO_Jhib-0K6oeeEjMILdHdSQS5AsycHMfkllKLissqQdSlX7emCEPXLzHZuj57PgeSxA
+    metaSortKey: -1638218013522
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_65430dd6018d456aafe2e0db4a137a88
+    parentId: fld_87a931420a974ed6ab08a80736bba96f
+    modified: 1637965551874
+    created: 1637960023376
+    url: http://localhost:8080/delteuser/1
+    name: borrar usuario
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1637960023376
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_33a5588c453c42eebfe212eb564c6196
+    parentId: fld_87a931420a974ed6ab08a80736bba96f
+    modified: 1639168464832
+    created: 1637959956389
+    url: http://localhost:8080/user/perico
+    name: usuario especifico
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJJRVNSQSIsInN1YiI6ImNhcnJhc2NvIiwiaWF0IjoxNjM5MTY4MTkyLCJleHAiOjE2MzkxNzQxOTJ9.EFLStyKXHoQ0gDFQsCAO_Jhib-0K6oeeEjMILdHdSQS5AsycHMfkllKLissqQdSlX7emCEPXLzHZuj57PgeSxA
+    metaSortKey: -1637959956389
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_10bf37176b4c4d178746898058ba1304
+    parentId: fld_87a931420a974ed6ab08a80736bba96f
+    modified: 1639169117453
+    created: 1637694539619
+    url: http://localhost:8080/users/
+    name: list
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJJRVNSQSIsInN1YiI6ImNhcnJhc2NvIiwiaWF0IjoxNjM5MTY4MTkyLCJleHAiOjE2MzkxNzQxOTJ9.EFLStyKXHoQ0gDFQsCAO_Jhib-0K6oeeEjMILdHdSQS5AsycHMfkllKLissqQdSlX7emCEPXLzHZuj57PgeSxA
+    metaSortKey: -1637694539619
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_8fba38daa7084287bfdf6e0b6e60ef39
+    parentId: fld_87a931420a974ed6ab08a80736bba96f
+    modified: 1639167614871
+    created: 1639089971170
+    url: http://localhost:8080/currentusername
+    name: curentusername
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJJRVNSQSIsInN1YiI6ImNhcnJhc2NvIiwiaWF0IjoxNjM5MTY3MzQ1LCJleHAiOjE2MzkxNzMzNDV9.J3uuhX7peVjuprk05TNWzE_B0_76NICvjoyh95xGnu0fVb4hhjIwyFIUz1q1pmSPcyDACXe_dgGejekwwcNnxQ
+    metaSortKey: -1637694523008
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_54482d6865cf4f75a18e7d3e75e11174
+    parentId: fld_87a931420a974ed6ab08a80736bba96f
+    modified: 1639169239469
+    created: 1639165530219
+    url: http://localhost:8080/logout
+    name: loogut
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJJRVNSQSIsInN1YiI6ImNhcnJhc2NvIiwiaWF0IjoxNjM5MTY4MTkyLCJleHAiOjE2MzkxNzQxOTJ9.EFLStyKXHoQ0gDFQsCAO_Jhib-0K6oeeEjMILdHdSQS5AsycHMfkllKLissqQdSlX7emCEPXLzHZuj57PgeSxA
+    metaSortKey: -1637694514702.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_2f7ede06fe3b4845991e59fd4ac5d666
+    parentId: fld_d9a8a0191856443c8cfed04105352aa1
+    modified: 1637694513227
+    created: 1637694506397
+    url: https://api.open5e.com/spells
+    name: api
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1637694506397
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_d9a8a0191856443c8cfed04105352aa1
+    parentId: fld_22b7c0cf5a5d4a0cb9b715e5271362df
+    modified: 1637694488866
+    created: 1637694488866
+    name: apiTry
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1637694488866
+    _type: request_group
+  - _id: env_92189b23638804d5f438825ea6eb4407dad8128c
+    parentId: wrk_df928e77595d435e939f42a6dfc2d92d
+    modified: 1602845663187
+    created: 1602845663187
+    name: Base Environment
+    data: {}
+    dataPropertyOrder: null
+    color: null
+    isPrivate: false
+    metaSortKey: 1602845663187
+    _type: environment
+  - _id: jar_92189b23638804d5f438825ea6eb4407dad8128c
+    parentId: wrk_df928e77595d435e939f42a6dfc2d92d
+    modified: 1639169240413
+    created: 1602845663191
+    name: Default Jar
+    cookies:
+      - key: name
+        value: edu
+        domain: localhost
+        path: /
+        hostOnly: true
+        pathIsDefault: true
+        creation: 2020-10-16T12:28:42.599Z
+        lastAccessed: 2020-10-16T12:28:52.155Z
+        id: "6735656345033059"
+      - key: XSRF-TOKEN
+        value: eyJpdiI6IlVpaFM5UXd2ZndCZ1M4UVlYb1pPdWc9PSIsInZhbHVlIjoiUEdjbERoekZvQUxkdnptS2drdGRFQWpLNDc5a1dRMzFCNXBRNHZSMmNQc2VuZG5kWE1uNVwvUk94S1pRcjRMRnMiLCJtYWMiOiI1MGVmYWZjNGQzYTNmYWI5NWM3MTExMTNlZDU2Mzg1MTViMmRhY2E3MzNlMGZmMDk5Y2QxZjRkZDU3ODg0YTY1In0%3D
+        expires: 2020-11-18T15:07:21.000Z
+        maxAge: 7200
+        domain: localhost
+        path: /
+        hostOnly: true
+        creation: 2020-11-18T13:04:56.841Z
+        lastAccessed: 2020-11-18T13:07:21.257Z
+        id: "9609245626862966"
+      - key: laravel_session
+        value: eyJpdiI6IlBzTk1cL3UxK1wvQmtITVE0d21OdWxEZz09IiwidmFsdWUiOiJXVU1JXC9DUE5KZlhQQVBXS1FZWlVJaVhYWnJ5U2o4R1wvd1NmTGNoT3J5WFwvMDJhcmZtYjZEOWdXaUsxaG9XTEFUIiwibWFjIjoiMWYwOTFhMTUwZjExMTBhMzdhYzVhNTI4MTQzMTk4OGI5MGIxN2E1NTIwOTMxMzYxOGQyZTc2M2I0ZGFkODAzZCJ9
+        expires: 2020-11-18T15:07:21.000Z
+        maxAge: 7200
+        domain: localhost
+        path: /
+        httpOnly: true
+        hostOnly: true
+        creation: 2020-11-18T13:04:56.842Z
+        lastAccessed: 2020-11-18T13:07:21.258Z
+        id: "02597252988178833"
+      - key: JSESSIONID
+        value: 10A848C5A25C4CBD10367B6E5736E927
+        domain: localhost
+        path: /
+        httpOnly: true
+        hostOnly: true
+        creation: 2021-02-22T19:22:26.005Z
+        lastAccessed: 2021-12-10T20:47:20.413Z
+        id: "9610284591845748"
+    _type: cookie_jar
+  - _id: spc_bbdb245fc3c14ff892e44362695f3f21
+    parentId: wrk_df928e77595d435e939f42a6dfc2d92d
+    modified: 1602845663140
+    created: 1602845663140
+    fileName: Insomnia
+    contents: ""
+    contentType: yaml
+    _type: api_spec
