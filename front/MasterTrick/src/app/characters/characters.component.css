@@ -7,3 +7,14 @@
 #main-col{
     max-width: 30%;
 }
+.creater{
+
+    margin-top: 5px;
+}
+.createrbutton{
+    width: 140px;
+    background-color: seagreen;
+}
+.container{
+    margin-top: 25px;
+}

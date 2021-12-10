@@ -24,13 +24,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { APP_INITIALIZER } from '@angular/core';
 import { resolve } from '@angular/compiler-cli/src/ngtsc/file_system';
-const routes:Routes=[
- 
-  {path:'personaje',component: CharactersComponent},
-  {path:'login',component: LoginComponent},
-  {path:'register',component: RegisterComponent},
-  {path:'view',component:ViewpanelComponent}
-];
+
 
 
 @NgModule({
@@ -46,7 +40,6 @@ const routes:Routes=[
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes),
     FormsModule,
     HttpClientModule,
     MatFormFieldModule,
@@ -58,7 +51,8 @@ const routes:Routes=[
     NgbModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    AppRoutingModule
     
    
     

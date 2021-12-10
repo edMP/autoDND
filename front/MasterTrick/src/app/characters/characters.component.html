@@ -7,27 +7,31 @@
       <table>
         <tr>
           <th>STRENGTH</th>
-          <input class="attributes" [value]="strength" disabled>
+          <p class="attributes" [innerHtml]="strength"></p>
         </tr>
         <tr>
           <th>DEXTERITY</th>
-          <input class="attributes" [value]="dexterity" disabled>
+          <p class="attributes" [innerHtml]="dexterity"></p>
+          
         </tr>
         <tr>
           <th>CONSTITUTION</th>
-          <input class="attributes" [value]="constitution" disabled>
+          <p class="attributes" [innerHtml]="constitution"></p>
+          
         </tr>
         <tr>
           <th>INTELLIGENCE</th>
-          <input class="attributes" [value]="intelligence" disabled>
+          <p class="attributes" [innerHtml]="intelligence"></p>
+          
         </tr>
         <tr>
           <th>WISDOM</th>
-          <input class="attributes" [value]="wisdom" disabled>
+          <p class="attributes" [innerHtml]="wisdom"></p>
+          
         </tr>
         <tr>
           <th>CHARISMA</th>
-          <input class="attributes" [value]="charisma" disabled>
+          <p class="attributes" [innerHtml]="charisma"></p>
         </tr>
         <tr>
           <th>LEVEL</th>
@@ -35,7 +39,8 @@
         </tr>
         <tr>
           <th>HIT DICE</th>
-          <input class="hit_dice" [value]="hit_dice" disabled>
+          <p class="hit_dice" [innerHtml]="hit_dice"></p>
+          
         </tr>
         
       </table>
@@ -53,7 +58,8 @@
           <div class="col">
             <mat-form-field appearance="fill">
               <mat-label>Select race</mat-label>
-              <mat-select placeholder="race" [(value)]="selectRace" (selectionChange)="selectRaces()"> 
+              <mat-select placeholder="race" [(ngModel)]="selectRace" id="characterrace" name="characterrace" #characterrace="ngModel" (selectionChange)="selectRaces()" required 
+              [ngClass]="{'has-error':(characterrace.valid && characterrace.touched)}">
                 <mat-option *ngFor="let race of races" [value]="race">{{race}}</mat-option>    
               </mat-select>
             </mat-form-field>
@@ -61,8 +67,7 @@
           <div class="col">
            <mat-form-field appearance="fill">
              <mat-label>personality trails</mat-label>
-             <input matInput [(ngModel)]="personality_trails" id="chaptertrails" name="chaptertrails" #chaptertrails="ngModel"required 
-             [ngClass]="{'has-error':(chaptertrails.valid && chaptertrails.touched)}">
+             <input matInput [(ngModel)]="personality_trails" id="chaptertrails" name="chaptertrails" #chaptertrails="ngModel">
            </mat-form-field>
           </div>
           
@@ -72,7 +77,8 @@
           <div class="col" id="main-col">
             <mat-form-field appearance="fill">
               <mat-label>Select class</mat-label>
-              <mat-select placeholder="class" [(value)]="selectClass" (selectionChange)="selectClassess()"> 
+              <mat-select placeholder="class" [(ngModel)]="selectClass"  id="characterselectClass" name="characterselectClass" #characterselectClass="ngModel" (selectionChange)="selectClassess()" required 
+              [ngClass]="{'has-error':(characterselectClass.valid && characterselectClass.touched)}"> 
                 <mat-option *ngFor="let class of classes" [value]="class ">{{class}}</mat-option>    
               </mat-select>
             </mat-form-field>
@@ -81,15 +87,13 @@
           <div class="col" >
             <mat-form-field appearance="fill">
               <mat-label>alignment </mat-label>
-              <input matInput [(ngModel)]="alignement" id="chapteralignment" name="chapteralignment" #chapteralignment="ngModel"required 
-              [ngClass]="{'has-error':(chapteralignment.valid && chapteralignment.touched)}">
+              <input matInput [(ngModel)]="alignement" id="chapteralignment" name="chapteralignment" #chapteralignment="ngModel">
             </mat-form-field>
           </div>
           <div class="col">
             <mat-form-field appearance="fill">
               <mat-label>ideals</mat-label>
-              <input matInput [(ngModel)]="ideals" id="chapterideals" name="chapterideals" #chapterideals="ngModel"required 
-              [ngClass]="{'has-error':(chapterideals.valid && chapterideals.touched)}">
+              <input matInput [(ngModel)]="ideals" id="chapterideals" name="chapterideals" #chapterideals="ngModel">
             </mat-form-field>
            </div>
            
@@ -114,39 +118,39 @@
           
             <mat-form-field appearance="fill">
               <mat-label>bound</mat-label>
-              <input matInput [(ngModel)]="bound" id="chapterbound" name="chapterbound" #chapterbound="ngModel"required 
-              [ngClass]="{'has-error':(chapterbound.valid && chapterbound.touched)}">
+              <input matInput [(ngModel)]="bound" id="chapterbound" name="chapterbound" #chapterbound="ngModel">
             </mat-form-field>
-           </div>
-           
-           <div class="col" id="main-col">
-            <mat-form-field appearance="fill">
-              <mat-label>Backgraund</mat-label>
-              <mat-select placeholder="background" [(ngModel)]="tempname" id="chapterdes" name="chapterdes" #chapterdes="ngModel" > 
-                <mat-option *ngFor="let back of backgrounds" [value]="back">{{back}}</mat-option>    
-              </mat-select>
-            </mat-form-field>
-          </div>
-         <div class="col">
-            <mat-form-field appearance="fill">
-              <mat-label>backgound description</mat-label>
-              <input matInput [(ngModel)]="tempdescription" id="chapterdes" name="chapterdes" #chapterdes="ngModel"  >
-            </mat-form-field>
-           </div> 
-          <div class="col">
-            <mat-form-field appearance="fill">
-              <mat-label>Mobility</mat-label>
-              <input matInput [value]="mobility" disabled>
-            </mat-form-field>
-           </div>
-
-           
-           
+           </div>           
           <div >
+
+            <div class="row">
+              <div class="col" id="main-col">
+                <mat-form-field appearance="fill">
+                  <mat-label>Backgraund</mat-label>
+                  <mat-select placeholder="background" [(ngModel)]="tempname" id="chapterdes" name="chapterdes" #chapterdes="ngModel" > 
+                    <mat-option *ngFor="let back of backgrounds" [value]="back">{{back}}</mat-option>    
+                  </mat-select>
+                </mat-form-field>
+              </div>
+             <div class="col">
+                <mat-form-field appearance="fill">
+                  <mat-label>backgound description</mat-label>
+                  <input matInput [(ngModel)]="tempdescription" id="chapterdes" name="chapterdes" #chapterdes="ngModel"  >
+                </mat-form-field>
+               </div> 
+              <div class="col">
+                <mat-form-field appearance="fill">
+                  <mat-label>Mobility</mat-label>
+                  <input matInput [value]="mobility" disabled>
+                </mat-form-field>
+               </div>
+
+            </div>
             <button mat-raised-button (click)="profeci()">calculate profeci</button>
            </div>
-           <div >
-            <button mat-raised-button (click)="create()">create</button>
+
+           <div class="creater" >
+            <button class="createrbutton" mat-raised-button (click)="create()" [disabled]="!createCharacter.valid">create</button>
            </div>
           
         </div>

@@ -1,4 +1,100 @@
-<form #regsitercontrol="ngForm">
+
+<section class="vh-100" style="background-color: #cfc8c9;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-xl-10">
+        <div class="card" style="border-radius: 1rem;">
+          <div class="row g-0">
+            <div class="col-md-6 col-lg-5 d-none d-md-block">
+              <img
+                src="https://media.wizards.com/images/dnd/newtodnd/NEW_TO_DD_Races_Human.png"
+                alt="login form"
+                class="img-fluid" style="height: 950px; height: 600px; border-radius: 1rem 0 0 1rem;"
+              />
+            </div>
+            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+              <div class="card-body p-4 p-lg-5 text-black">
+
+                <form #regsitercontrol="ngForm">
+
+                  <div class="d-flex align-items-center mb-3 pb-1">
+                    <span class="h1 fw-bold mb-0">New acount</span>
+                    
+                  </div>
+                  
+                  <div class="row">
+                    <div class="col " style="max-width: 30%;" >
+                      <mat-form-field appearance="fill">
+                        <mat-label>nick</mat-label>
+                        <input matInput [(ngModel)]="newnick" id="Nick" name="Nick" #Nick="ngModel"required
+                        [ngClass]="{'has-error':(Nick.valid && Nick.touched)}" >
+                        <mat-error [ngClass]="{'has-error':(Nick.valid && Nick.touched)}" >required</mat-error>
+                      </mat-form-field>
+                    </div>
+                </div>
+                    <div class="row">
+                        <div class="col " style="max-width: 30%;" >
+                          <mat-form-field appearance="fill">
+                            <mat-label>name</mat-label>
+                            <input matInput [(ngModel)]="newname" id="firstname" name="firstname" #firstname="ngModel"required
+                            [ngClass]="{'has-error':(firstname.valid && firstname.touched)}" >
+                            <mat-error [ngClass]="{'has-error':(firstname.valid && firstname.touched)}"> required </mat-error>
+                          </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col " style="max-width: 30%;" >
+                          <mat-form-field appearance="fill">
+                            <mat-label>last name</mat-label>
+                            <input matInput [(ngModel)]="newlastname" id="lastname" name="lastname" #lastname="ngModel"required 
+                            [ngClass]="{'has-error':(lastname.valid && lastname.touched)}">
+                            <mat-error [ngClass]="{'has-error':(lastname.valid && lastname.touched)}"> required </mat-error>
+                          </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col " style="max-width: 30%;" >
+                          <mat-form-field appearance="fill">
+                            <mat-label>password</mat-label>
+                            <input matInput [(ngModel)]="newpassword" id="password" name="password" #password="ngModel"required
+                            [ngClass]="{'has-error':(password.valid && password.touched)}" >
+                            <mat-error [ngClass]="{'has-error':(password.valid && password.touched)}"  >required</mat-error>
+                          </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col " style="max-width: 30%;" >
+                          <mat-form-field appearance="fill">
+                            <mat-label>email</mat-label>
+                            <input matInput [(ngModel)]="newemail" id="email" name="email" #email="ngModel"required 
+                            [ngClass]="{'has-error':(email.valid && email.touched)}">
+                            <mat-error [ngClass]="{'has-error':(email.valid && email.touched)}">required</mat-error>
+                          </mat-form-field>
+                        </div>
+                    </div>
+                    <div id="myModal" class="modal">
+                      <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <p>the user already exists </p>
+                      </div>
+                    </div>
+
+                  <div class="pt-1 mb-4">
+                    <button mat-raised-button class="createAcount" (click)="adduser()" [disabled]="!regsitercontrol.valid">create</button>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- <form #regsitercontrol="ngForm">
   <div class="container">
     
     <div class="row">
@@ -65,4 +161,4 @@
             </div>
         </div>
   </div>
-</form>
+</form> -->

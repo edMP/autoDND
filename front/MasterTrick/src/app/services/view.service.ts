@@ -27,8 +27,8 @@ export class viewService{
         .then(res=>res.json())
         .then(data=>{
             for(let a of data){
-           
-             name.push(a.character_name)   
+                console.log(a.name + "aaaaaaaaa")
+             name.push(a.name)   
             
             }
         })       
@@ -54,7 +54,7 @@ export class viewService{
         .then(data=>{
             for(let a of data){
            
-             work.push(a.profesion)   
+             work.push(a.profession)   
             
             }
         })       

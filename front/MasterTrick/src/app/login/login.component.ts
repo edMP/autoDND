@@ -17,7 +17,13 @@ export class LoginComponent implements OnInit {
   makelogin(){
    
     this.loginser.login(this.nick,this.password).subscribe(response=>{
-      localStorage.setItem('auth_token',response['token'])
+      if(response == false){
+
+      }else{
+        localStorage.setItem('auth_token',response['token'])
+        window.location.replace("http://localhost:4200/view");
+      }
+      
     })
 
   }

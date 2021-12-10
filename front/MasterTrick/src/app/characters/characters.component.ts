@@ -25,13 +25,13 @@ export class CharactersComponent implements OnInit {
   race!:string;
   classes:string[]=[];
   name!:string;
-  ideals!:string;
-  alignement!:string;
+  ideals:string = "";
+  alignement:string = "";
   personality_trails:string="";
   profeci_bonus:string="0";
   level:string="1";
   leguage!:string;
-  bound!:string;
+  bound:string= "";
   selectClass!:string;
   class!:string;
   strength: string="0";

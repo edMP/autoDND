@@ -16,7 +16,6 @@ export class ViewpanelComponent implements OnInit {
 
   ngOnInit(): void {
     
-    document.getElementById("loginuser")!.innerHTML=""+this.loginuser;
     this.names=this.view.loginUserViewname()
     this.level=this.view.loginUserViewlevel()
     this.work=this.view.loginUserWork()
