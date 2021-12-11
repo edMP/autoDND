@@ -55,6 +55,7 @@ public class CharactersControllers {
 
     @GetMapping(value = "/currentcharacters/")
     private ResponseEntity<Object> currentUserChar(){
+        // Users tem= (Users) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return new ResponseEntity<>(
                 characterRepository.userCharacters(SecurityContextHolder.getContext().getAuthentication().getName()),
                 HttpStatus.OK);
@@ -77,7 +78,7 @@ public class CharactersControllers {
         }
         return cus;
     }
-    @GetMapping(value = "/characters/{id}")
+    @GetMapping(value = "/view/{id}")
     private ResponseEntity<Object> searchChar(@PathVariable("id")Long id){
         return new ResponseEntity<>(characterRepository.findById(id),HttpStatus.OK);
     }
