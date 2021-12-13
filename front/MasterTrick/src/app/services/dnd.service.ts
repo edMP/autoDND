@@ -15,16 +15,18 @@ export class DndService {
   private token = localStorage.getItem('auth_token');
   private urlEndpoint: string = "https://api.open5e.com";
   private serverEndpoint:string="http://localhost:8080";
-  private httpHeaders = new HttpHeaders({'Content-Type':'application/json'});
+  private httpHeaders = new HttpHeaders({'content-type':'application/json'});
 
   private header = new Headers();
     private httpheaders = {
         method: "POST",
         headers: this.header
         };
+
   constructor(private http: HttpClient) {
         this.header.append("Authorization", "Bearer " + this.token);
         this.header.append("Content-type", "application/json");
+        this.httpHeaders = this.httpHeaders.append("Authorization", "Bearer " + this.token);
   }
 
   gettype(work: string) {
@@ -105,7 +107,7 @@ export class DndService {
         personality_trails:string,ideals:string,profeci_bonus:string,mobility:string,lenguage:string,
         bound:string,backgrounds:Background): Observable<any>{
           
-          return this.http.post(`${this.serverEndpoint}/character/add`,{
+          return this.http.post(`${this.serverEndpoint}/addcharacter/`,{
             level,name,profession,race,strength,dexterity,constitution,intelligence,wisdom,charisma
             ,alignment,hit_dice,personality_trails,ideals,profeci_bonus,mobility,lenguage,bound,backgrounds}
             ,{headers : this.httpHeaders});

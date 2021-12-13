@@ -105,6 +105,7 @@ public class UsersControllers {
         userRepository.save(user);
         return new ResponseEntity<>(new AuthToken(token), HttpStatus.OK);
     }
+    //@RequestMapping(value = "/logout/",  method=RequestMethod.GET)
     @GetMapping("/logout")
     public ResponseEntity<Object> logout() {
         Users user = (Users) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

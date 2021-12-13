@@ -34,7 +34,7 @@ public class CharactersControllers {
         return new ResponseEntity<>(characterRepository.findAll(), HttpStatus.OK);
     }
 
-    @PostMapping(value = "/character/add")
+    @PostMapping(value = "/addcharacter")
     public ResponseEntity<Object> newCharacter(@RequestBody Characters ch){
 
         //Users us=checkUser(ch.getAlter().getNick());

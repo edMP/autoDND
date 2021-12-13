@@ -7,10 +7,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.logout.HttpStatusReturningLogoutSuccessHandler;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -32,8 +34,10 @@ public class MasterTrickApplication {
                     .authorizeRequests()
                     .antMatchers("/login/**").permitAll()
                     .antMatchers("/createuser/**").permitAll()
+                    .antMatchers("/logout").authenticated()
                     .antMatchers("/**").authenticated()
                     .antMatchers("/*").authenticated();
+
         }
 
     }
